@@ -1,5 +1,6 @@
 {
-  "name": "github-issue",
+  "name": "fun-planet-website",
+  "description": "Official Website from Fun Planet",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,6 +11,7 @@
     "@testing-library/user-event": "^12.8.0",
     "@typescript-eslint/eslint-plugin": "^4.15.2",
     "@typescript-eslint/parser": "^4.15.2",
+    "axios": "^0.21.1",
     "eslint": "^7.21.0",
     "eslint-plugin-react": "^7.22.0",
     "react": "^17.0.1",
