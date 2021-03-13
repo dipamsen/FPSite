@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import HomeScreen from "./screens/Home";
 import SyllabusScreen from "./screens/Syllabus";
-import BetweenusScreen from "./screens/Betweenus";
+import ResourcesScreen from "./screens/Resources";
 import NotFound from "./screens/NotFound";
+import SubjectResourcesScreen from "./screens/SubjectResources";
 import { Container } from "@material-ui/core";
 
 function App(): JSX.Element {
@@ -17,9 +18,14 @@ function App(): JSX.Element {
             <SyllabusScreen />
           </Container>
         </Route>
-        <Route exact path="/betweenus">
+        <Route exact path="/resources/:sub">
           <Container maxWidth="md">
-            <BetweenusScreen />
+            <SubjectResourcesScreen />
+          </Container>
+        </Route>
+        <Route exact path="/resources">
+          <Container maxWidth="md">
+            <ResourcesScreen />
           </Container>
         </Route>
         <Route exact path="/">

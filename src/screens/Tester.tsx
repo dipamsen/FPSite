@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import * as API from "../API";
+import * as API from "../shared/API";
 
 export default function Tester(): JSX.Element {
   const [testName, setTestName] = useState("");
