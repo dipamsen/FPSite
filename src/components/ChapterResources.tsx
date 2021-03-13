@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Divider } from "@material-ui/core";
+import { Button, ButtonGroup, Divider, useMediaQuery } from "@material-ui/core";
 import React from "react";
 
 export default function ChapterResources({
@@ -8,6 +8,7 @@ export default function ChapterResources({
   chapter: number;
   chapterName: string;
 }): JSX.Element {
+  const isMobile = !useMediaQuery("(min-width:600px)");
   const resources = [
     {
       name: "Practice Sheet",
@@ -22,11 +23,26 @@ export default function ChapterResources({
       </h1>
       {resources.map((res, i) => (
         <div key={i}>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div style={{ margin: "10px", fontSize: "large" }}>{res.name}</div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              flexDirection: isMobile ? "column" : "row",
+              alignItems: "center",
+              margin: "10px",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "large",
+                margin: "10px",
+              }}
+            >
+              {res.name}
+            </div>
             <div>
               <ButtonGroup variant="contained">
-                <Button target="_blank" href={res.qp}>
+                <Button color="primary" target="_blank" href={res.qp}>
                   Question Paper
                 </Button>
                 <Button target="_blank" href={res.as}>
