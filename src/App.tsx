@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import HomeScreen from "./screens/Home";
-import SyllabusScreen from "./screens/Syllabus";
+import TextbookScreen from "./screens/Textbook";
 import ResourcesScreen from "./screens/Resources";
 import NotFound from "./screens/NotFound";
 import SubjectResourcesScreen from "./screens/SubjectResources";
@@ -13,9 +13,9 @@ function App(): JSX.Element {
     <Router>
       <Header />
       <Switch>
-        <Route exact path="/syllabus">
+        <Route exact path="/textbook">
           <Container maxWidth="md">
-            <SyllabusScreen />
+            <TextbookScreen />
           </Container>
         </Route>
         <Route exact path="/resources/:sub">

@@ -5,6 +5,7 @@ import { Link, useRouteMatch } from "react-router-dom";
 interface NameAndURL {
   name: string;
   url: string;
+  disabled?: boolean;
 }
 
 export default function LinkedList({
@@ -16,15 +17,16 @@ export default function LinkedList({
   return (
     <div>
       <List>
-        {list.map(({ name, url }, i) => (
+        {list.map(({ name, url, disabled }, i) => (
           <ListItem
             divider
             button
             key={i}
+            disabled={disabled}
             component={Link}
             to={`${baseURL == "/" ? "" : baseURL}/${url}`}
           >
-            {name}
+            {name} {disabled && "(Work in Progress)"}
           </ListItem>
         ))}
       </List>
