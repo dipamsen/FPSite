@@ -6,6 +6,7 @@ import {
   ListItem,
   List,
   Select,
+  CircularProgress,
 } from "@material-ui/core";
 import { get } from "../shared/API";
 // import { List, ListItem } from "@material-ui/core";
@@ -35,9 +36,9 @@ export default function TextBookScreen(): JSX.Element {
   return (
     <>
       <h2 style={{ textAlign: "center" }}>EBook</h2>
-      <FormControl style={{ width: "100%" }}>
-        <InputLabel>Select Subject</InputLabel>
-        {subjectList && (
+      {subjectList.length > 0 ? (
+        <FormControl style={{ width: "100%" }}>
+          <InputLabel>Select Subject</InputLabel>
           <Select value={subject} onChange={handleChange}>
             <MenuItem value="" disabled>
               Select Subject
@@ -48,31 +49,33 @@ export default function TextBookScreen(): JSX.Element {
               </MenuItem>
             ))}
           </Select>
-        )}
-        {subject !== "" && (
-          <>
-            <h2>
-              Subject: {currSub().subject}
-              {"\n"}
-              <br />
-              Book Name: {currSub().bookName}
-            </h2>
-            <List>
-              {currSub().chapters.map((ch, i) => (
-                <ListItem
-                  key={i}
-                  divider
-                  component="a"
-                  href={ch.link}
-                  target="_blank"
-                >
-                  {ch && `${ch.index}. ${ch.name}`}
-                </ListItem>
-              ))}
-            </List>
-          </>
-        )}
-      </FormControl>
+        </FormControl>
+      ) : (
+        <CircularProgress />
+      )}
+      {subject !== "" && (
+        <>
+          <h2>
+            Subject: {currSub().subject}
+            {"\n"}
+            <br />
+            Book Name: {currSub().bookName}
+          </h2>
+          <List>
+            {currSub().chapters.map((ch, i) => (
+              <ListItem
+                key={i}
+                divider
+                component="a"
+                href={ch.link}
+                target="_blank"
+              >
+                {ch && `${ch.index}. ${ch.name}`}
+              </ListItem>
+            ))}
+          </List>
+        </>
+      )}
     </>
   );
 }

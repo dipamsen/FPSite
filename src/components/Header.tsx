@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Header(): JSX.Element {
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Toolbar>
         <IconButton edge="start" aria-label="logo">
           <img src="logo.png" width="40" alt="" />
