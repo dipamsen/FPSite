@@ -1,27 +1,19 @@
 import { Button, ButtonGroup, Divider, useMediaQuery } from "@material-ui/core";
 import React from "react";
+import { Chapter } from "../screens/SubjectResources";
 
 export default function ChapterResources({
   chapter,
   chapterName,
 }: {
-  chapter: number;
+  chapter: Chapter;
   chapterName: string;
 }): JSX.Element {
   const isMobile = !useMediaQuery("(min-width:600px)");
-  const resources = [
-    {
-      name: "Practice Sheet",
-      qp: "https://google.com",
-      as: "https://betweenus.in",
-    },
-  ];
   return (
     <div>
-      <h1>
-        Chapter: {chapter}. {chapterName}
-      </h1>
-      {resources.map((res, i) => (
+      <h3>{chapterName}</h3>
+      {chapter.resources.map((res, i) => (
         <div key={i}>
           <div
             style={{
@@ -43,11 +35,13 @@ export default function ChapterResources({
             <div>
               <ButtonGroup variant="contained">
                 <Button color="primary" target="_blank" href={res.qp}>
-                  Question Paper
+                  {res.as ? "Question Paper" : "Open"}
                 </Button>
-                <Button target="_blank" href={res.as}>
-                  Answer Sheet
-                </Button>
+                {res.hasSolution && res.as && (
+                  <Button target="_blank" href={res.as}>
+                    Answer Sheet
+                  </Button>
+                )}
               </ButtonGroup>
             </div>
           </div>
