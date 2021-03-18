@@ -34,12 +34,12 @@ export default function ChapterResources({
             </div>
             <div>
               <ButtonGroup variant="contained">
-                <Button color="primary" target="_blank" href={res.qp}>
-                  {res.as ? "Question Paper" : "Open"}
+                <Button color="primary" target="_blank" href={res.link}>
+                  Open
                 </Button>
-                {res.hasSolution && res.as && (
-                  <Button target="_blank" href={res.as}>
-                    Answer Sheet
+                {res.hasSolution && res.answerLink && (
+                  <Button target="_blank" href={res.answerLink}>
+                    Answers
                   </Button>
                 )}
               </ButtonGroup>

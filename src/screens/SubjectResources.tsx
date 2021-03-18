@@ -20,8 +20,8 @@ export interface Chapter {
 interface Resource {
   name: string;
   hasSolution: boolean;
-  qp: string;
-  as?: string;
+  link: string;
+  answerLink?: string;
 }
 
 export default function SubjectResources(): JSX.Element {
@@ -36,7 +36,7 @@ export default function SubjectResources(): JSX.Element {
       setLoaded(true);
     }
     getChapterListWithResources();
-  });
+  }, []);
   const handleChange = (
     event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>
   ) => {
