@@ -17,13 +17,28 @@ export default function TextBookScreen(): JSX.Element {
     {
       subject: string;
       bookName: string;
-      chapters: { name: string; index: number; link: string }[];
+      id: string;
+      idx: number;
     }[]
   >([]);
+  const [currSub, setCurrSub] = useState<{
+    subject?: string;
+    bookName?: string;
+    chapters?: {
+      name: string;
+      index: number;
+      link: number;
+    }[];
+  }>({});
   const handleChange = (
     event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>
   ) => {
     setSubject(String(event.target.value).toString());
+    async function getThis() {
+      const thisSub = await get("/textbook/" + event.target.value);
+      setCurrSub(thisSub);
+    }
+    getThis();
   };
   useEffect(() => {
     async function getSubjects() {
@@ -32,7 +47,6 @@ export default function TextBookScreen(): JSX.Element {
     }
     getSubjects();
   }, []);
-  const currSub = () => subjectList[+subject];
   return (
     <>
       <h2 style={{ textAlign: "center" }}>EBook</h2>
@@ -44,7 +58,7 @@ export default function TextBookScreen(): JSX.Element {
               Select Subject
             </MenuItem>
             {subjectList.map((name, i) => (
-              <MenuItem key={i} value={i}>
+              <MenuItem key={i} value={name.idx}>
                 {name.subject}
               </MenuItem>
             ))}
@@ -53,19 +67,21 @@ export default function TextBookScreen(): JSX.Element {
       ) : (
         <CircularProgress />
       )}
-      {subject !== "" && (
+      {currSub.subject && currSub.chapters && (
         <>
           <h2>
-            Subject: {currSub().subject}
+            Subject: {currSub.subject}
             {"\n"}
             <br />
-            Book Name: {currSub().bookName}
+            Book Name: {currSub.bookName}
           </h2>
           <List>
-            {currSub().chapters.map((ch, i) => (
+            {currSub.chapters.map((ch, i) => (
               <ListItem
                 key={i}
                 divider
+                // eslint-disable-next-line
+                // @ts-ignore
                 component="a"
                 href={ch.link}
                 target="_blank"
