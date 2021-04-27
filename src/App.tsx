@@ -4,8 +4,10 @@ import Header from "./components/Header";
 import HomeScreen from "./screens/Home";
 import TextbookScreen from "./screens/Textbook";
 import ResourcesScreen from "./screens/Resources";
+import CalendarScreen from "./screens/Calendar";
 import NotFound from "./screens/NotFound";
 import SubjectResourcesScreen from "./screens/SubjectResources";
+import ExamMaterialScreen from "./screens/ExamMaterialScreen";
 import { Container } from "@material-ui/core";
 
 function App(): JSX.Element {
@@ -26,6 +28,16 @@ function App(): JSX.Element {
         <Route exact path="/resources">
           <Container maxWidth="md">
             <ResourcesScreen />
+          </Container>
+        </Route>
+        <Route exact path="/calendar">
+          <Container maxWidth="md">
+            <CalendarScreen />
+          </Container>
+        </Route>
+        <Route exact path="/exam-material">
+          <Container maxWidth="md">
+            <ExamMaterialScreen />
           </Container>
         </Route>
         <Route exact path="/">

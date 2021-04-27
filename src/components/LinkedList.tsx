@@ -14,6 +14,7 @@ export default function LinkedList({
   list: NameAndURL[];
 }): JSX.Element {
   const { url: baseURL } = useRouteMatch();
+
   return (
     <div>
       <List>
