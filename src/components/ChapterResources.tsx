@@ -1,6 +1,6 @@
 import { Button, ButtonGroup, Divider, useMediaQuery } from "@material-ui/core";
 import React from "react";
-import { Chapter } from "../screens/SubjectResources";
+import { Chapter, Resource } from "../screens/SubjectResources";
 
 export default function ChapterResources({
   chapter,
@@ -9,6 +9,11 @@ export default function ChapterResources({
   chapter: Chapter;
   chapterName: string;
 }): JSX.Element {
+  function getLink(res: Resource) {
+    return res.is_folder
+      ? `https://drive.google.com/drive/folders/${res.drive_id}`
+      : `https://drive.google.com/file/d/${res.drive_id}/view`;
+  }
   const isMobile = !useMediaQuery("(min-width:600px)");
   return (
     <div>
@@ -34,11 +39,14 @@ export default function ChapterResources({
             </div>
             <div>
               <ButtonGroup variant="contained">
-                <Button color="primary" target="_blank" href={res.link}>
+                <Button color="primary" target="_blank" href={getLink(res)}>
                   Open
                 </Button>
-                {res.hasSolution && res.answerLink && (
-                  <Button target="_blank" href={res.answerLink}>
+                {res.answers_id && (
+                  <Button
+                    target="_blank"
+                    href={`https://drive.google.com/file/d/${res.answers_id}/view`}
+                  >
                     Answers
                   </Button>
                 )}

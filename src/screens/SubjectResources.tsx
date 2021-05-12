@@ -10,18 +10,18 @@ import { useParams } from "react-router-dom";
 import { SUBJECTS } from "../shared/constants";
 import { Subject } from "../shared/types";
 import ChapterResources from "../components/ChapterResources";
-import * as API from "../shared/API";
+import SB from "../shared/SupaBase";
 
 export interface Chapter {
-  chapterName: string;
+  name: string;
   resources: Resource[];
 }
 
-interface Resource {
+export interface Resource {
   name: string;
-  hasSolution: boolean;
-  link: string;
-  answerLink?: string;
+  drive_id: string;
+  answers_id?: string;
+  is_folder: boolean;
 }
 
 export default function SubjectResources(): JSX.Element {
@@ -29,11 +29,26 @@ export default function SubjectResources(): JSX.Element {
   const [chapter, setChapter] = useState("");
   const [chaptersList, setChaptersList] = useState<Chapter[]>([]);
   const [loaded, setLoaded] = useState<boolean>(false);
+
   useEffect(() => {
     async function getChapterListWithResources() {
-      const data = await API.get(`/resources/${sub}`);
-      setChaptersList(data);
-      setLoaded(true);
+      const {
+        data,
+        error,
+      }: {
+        data: Chapter[] | null;
+        error: Omit<Error, "name"> | null;
+      } = await SB.from(sub).select("*");
+      console.log(data, error);
+      if (data) {
+        setChaptersList(
+          data.filter(
+            (x) =>
+              x == null || x.resources.filter((res) => res == null).length == 0
+          )
+        );
+        setLoaded(true);
+      }
     }
     getChapterListWithResources();
   }, []);
@@ -55,7 +70,7 @@ export default function SubjectResources(): JSX.Element {
               </MenuItem>
               {chaptersList.map((ch, i) => (
                 <MenuItem value={i} key={i}>
-                  {ch.chapterName}
+                  {ch.name}
                 </MenuItem>
               ))}
             </Select>
@@ -69,7 +84,7 @@ export default function SubjectResources(): JSX.Element {
       {chapter && (
         <ChapterResources
           chapter={chaptersList[+chapter]}
-          chapterName={chaptersList[+chapter].chapterName}
+          chapterName={chaptersList[+chapter].name}
         />
       )}
     </div>
