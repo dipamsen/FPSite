@@ -22,6 +22,7 @@ export interface Resource {
   drive_id: string;
   answers_id?: string;
   is_folder: boolean;
+  ignore: boolean;
 }
 
 export default function SubjectResources(): JSX.Element {
