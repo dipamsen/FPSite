@@ -68,11 +68,20 @@ export default function SubjectResources(): JSX.Element {
     const val = event.target.value;
     setChapter(val ? String(event.target.value).toString() : "");
   };
-  const chaptersCat = {
-    PreMTT: chaptersList.filter((ch) => ch.category === "PreMTT"),
-    MTT: chaptersList.filter((ch) => ch.category === "MTT"),
-    PostMTT: chaptersList.filter((ch) => ch.category === "PostMTT"),
-    PreBoard: chaptersList.filter((ch) => ch.category === "PreBoard"),
+  let i = 0;
+  const chaptersCat: Record<string, [number, Chapter][]> = {
+    PreMTT: chaptersList
+      .filter((ch) => ch.category === "PreMTT")
+      .map((ch) => [i++, ch]),
+    MTT: chaptersList
+      .filter((ch) => ch.category === "MTT")
+      .map((ch) => [i++, ch]),
+    PostMTT: chaptersList
+      .filter((ch) => ch.category === "PostMTT")
+      .map((ch) => [i++, ch]),
+    PreBoard: chaptersList
+      .filter((ch) => ch.category === "PreBoard")
+      .map((ch) => [i++, ch]),
   };
   return (
     <div>
@@ -88,7 +97,7 @@ export default function SubjectResources(): JSX.Element {
               {chaptersCat.PreMTT.length > 0 && (
                 <ListSubheader>Pre Mid Term Test</ListSubheader>
               )}
-              {chaptersCat["PreMTT"].map((ch, i) => (
+              {chaptersCat["PreMTT"].map(([i, ch]) => (
                 <MenuItem value={i} key={i}>
                   {ch.name}
                 </MenuItem>
@@ -96,7 +105,7 @@ export default function SubjectResources(): JSX.Element {
               {chaptersCat.MTT.length > 0 && (
                 <ListSubheader>Mid Term Test</ListSubheader>
               )}
-              {chaptersCat["MTT"].map((ch, i) => (
+              {chaptersCat["MTT"].map(([i, ch]) => (
                 <MenuItem value={i} key={i}>
                   {ch.name}
                 </MenuItem>
@@ -104,7 +113,7 @@ export default function SubjectResources(): JSX.Element {
               {chaptersCat.PostMTT.length > 0 && (
                 <ListSubheader>Post Mid Term Test</ListSubheader>
               )}
-              {chaptersCat["PostMTT"].map((ch, i) => (
+              {chaptersCat["PostMTT"].map(([i, ch]) => (
                 <MenuItem value={i} key={i}>
                   {ch.name}
                 </MenuItem>
@@ -112,7 +121,7 @@ export default function SubjectResources(): JSX.Element {
               {chaptersCat.PreBoard.length > 0 && (
                 <ListSubheader>Pre Board Examination</ListSubheader>
               )}
-              {chaptersCat["PreBoard"].map((ch, i) => (
+              {chaptersCat["PreBoard"].map(([i, ch]) => (
                 <MenuItem value={i} key={i}>
                   {ch.name}
                 </MenuItem>
