@@ -66,7 +66,8 @@ export default function SubjectResources(): JSX.Element {
     event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>
   ) => {
     const val = event.target.value;
-    setChapter(val ? String(event.target.value).toString() : "");
+    if (!(val == null))
+      setChapter(val !== "" ? String(event.target.value).toString() : "");
   };
   let i = 0;
   const chaptersCat: Record<string, [number, Chapter][]> = {
