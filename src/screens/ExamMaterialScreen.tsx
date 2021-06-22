@@ -11,7 +11,7 @@ const ExamMaterial: React.FC = () => {
         href="https://drive.google.com/file/d/1w1MuGPGwFnfsw_hczd6_7LNzy_jdsuIK/view?usp=sharing"
         target="_blank"
       >
-        Syllabus
+        Syllabus and Timetable
       </Button>
     </div>
   );
