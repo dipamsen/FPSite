@@ -10,7 +10,7 @@ export default function Header(): JSX.Element {
         <IconButton edge="start" aria-label="logo">
           <img src="logo.png" width="40" alt="" />
         </IconButton>
-        <Typography align="center" style={{ width: "100%" }} variant="h4">
+        <Typography align="center" style={{ width: "100%" }} variant="h2">
           Fun Planet
         </Typography>
         <IconButton edge="end" aria-label="home" component={Link} to="/">
