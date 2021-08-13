@@ -24,6 +24,7 @@ export interface Chapter {
   category: string;
   name: string;
   resources: Resource[];
+  hidden: boolean;
 }
 
 export interface Resource {
@@ -52,10 +53,13 @@ export default function SubjectResources(): JSX.Element {
       console.log(data, error);
       if (data) {
         setChaptersList(
-          data.filter(
-            (x) =>
-              x == null || x.resources.filter((res) => res == null).length == 0
-          )
+          data
+            .filter(
+              (x) =>
+                x == null ||
+                x.resources.filter((res) => res == null).length == 0
+            )
+            .filter((x) => x.hidden)
         );
         setLoaded(true);
       }
