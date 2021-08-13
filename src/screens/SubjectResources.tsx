@@ -59,7 +59,7 @@ export default function SubjectResources(): JSX.Element {
                 x == null ||
                 x.resources.filter((res) => res == null).length == 0
             )
-            .filter((x) => x.hidden)
+            .filter((x) => !x.hidden)
         );
         setLoaded(true);
       }
