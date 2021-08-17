@@ -1,5 +1,6 @@
 import {
   CircularProgress,
+  Divider,
   FormControl,
   InputLabel,
   ListSubheader,
@@ -100,7 +101,7 @@ export default function SubjectResources(): JSX.Element {
                 Chapter
               </MenuItem>
               {chaptersCat.PreMTT.length > 0 && (
-                <ListSubheader>Pre Mid Term Test</ListSubheader>
+                <ListSubheader>Periodic Tests</ListSubheader>
               )}
               {chaptersCat["PreMTT"].map(([i, ch]) => (
                 <MenuItem value={i} key={i}>
@@ -108,15 +109,16 @@ export default function SubjectResources(): JSX.Element {
                 </MenuItem>
               ))}
               {chaptersCat.MTT.length > 0 && (
-                <ListSubheader>Mid Term Test</ListSubheader>
+                <ListSubheader>Boards - Term I</ListSubheader>
               )}
               {chaptersCat["MTT"].map(([i, ch]) => (
                 <MenuItem value={i} key={i}>
                   {ch.name}
                 </MenuItem>
               ))}
+              <Divider />
               {chaptersCat.PostMTT.length > 0 && (
-                <ListSubheader>Post Mid Term Test</ListSubheader>
+                <ListSubheader>Periodic Tests</ListSubheader>
               )}
               {chaptersCat["PostMTT"].map(([i, ch]) => (
                 <MenuItem value={i} key={i}>
@@ -124,7 +126,7 @@ export default function SubjectResources(): JSX.Element {
                 </MenuItem>
               ))}
               {chaptersCat.PreBoard.length > 0 && (
-                <ListSubheader>Pre Board Examination</ListSubheader>
+                <ListSubheader>Boards - Term II</ListSubheader>
               )}
               {chaptersCat["PreBoard"].map(([i, ch]) => (
                 <MenuItem value={i} key={i}>
