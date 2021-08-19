@@ -101,7 +101,9 @@ export default function SubjectResources(): JSX.Element {
                 Chapter
               </MenuItem>
               {chaptersCat.PreMTT.length > 0 && (
-                <ListSubheader>Periodic Tests</ListSubheader>
+                <ListSubheader style={{ backgroundColor: "white" }}>
+                  Periodic Tests
+                </ListSubheader>
               )}
               {chaptersCat["PreMTT"].map(([i, ch]) => (
                 <MenuItem value={i} key={i}>
@@ -109,7 +111,9 @@ export default function SubjectResources(): JSX.Element {
                 </MenuItem>
               ))}
               {chaptersCat.MTT.length > 0 && (
-                <ListSubheader>Boards - Term I</ListSubheader>
+                <ListSubheader style={{ backgroundColor: "white" }}>
+                  Boards - Term I
+                </ListSubheader>
               )}
               {chaptersCat["MTT"].map(([i, ch]) => (
                 <MenuItem value={i} key={i}>
@@ -118,7 +122,9 @@ export default function SubjectResources(): JSX.Element {
               ))}
               <Divider />
               {chaptersCat.PostMTT.length > 0 && (
-                <ListSubheader>Periodic Tests</ListSubheader>
+                <ListSubheader style={{ backgroundColor: "white" }}>
+                  Periodic Tests
+                </ListSubheader>
               )}
               {chaptersCat["PostMTT"].map(([i, ch]) => (
                 <MenuItem value={i} key={i}>
@@ -126,7 +132,9 @@ export default function SubjectResources(): JSX.Element {
                 </MenuItem>
               ))}
               {chaptersCat.PreBoard.length > 0 && (
-                <ListSubheader>Boards - Term II</ListSubheader>
+                <ListSubheader style={{ backgroundColor: "white" }}>
+                  Boards - Term II
+                </ListSubheader>
               )}
               {chaptersCat["PreBoard"].map(([i, ch]) => (
                 <MenuItem value={i} key={i}>
