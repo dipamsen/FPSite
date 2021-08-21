@@ -4,6 +4,15 @@ import React from "react";
 const ExamMaterial: React.FC = () => {
   return (
     <div>
+      <h2>Exam: Periodic Test II</h2>
+      <Button
+        color="secondary"
+        variant="contained"
+        href="https://drive.google.com/file/d/1l_KyZQn7NAiNN-Xmml1DP4hPEu6yEMhc/view?usp=sharing"
+        target="_blank"
+      >
+        Syllabus and Timetable
+      </Button>
       <h2>Exam: CBSE Boards - Term I</h2>
       <Button
         color="secondary"
