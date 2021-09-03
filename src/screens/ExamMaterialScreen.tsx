@@ -22,6 +22,14 @@ const ExamMaterial: React.FC = () => {
       >
         Syllabus and Timetable
       </Button>
+      <Button
+        color="secondary"
+        variant="outlined"
+        href="https://drive.google.com/drive/folders/1zLQoqxaqZ5a1rLwfJZBHchjZEiLQNRKU?usp=sharing"
+        target="_blank"
+      >
+        Material
+      </Button>
       <h2>Exam: CBSE Boards - Term II</h2>
       <Button
         color="secondary"
